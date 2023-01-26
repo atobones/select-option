@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="dropdown">
+        <div class="select">
+            <span class="selected">SEX</span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menu">
+            <li>Man</li>
+            <li>Woman</li>
+            <li>Trans</li>
+            <li class="active">Two Man</li>
+            <li>Two Woman</li>
+        </ul>
+    </div>
+    <script language="JavaScript">
+        console.log(123)
+        const dropdowns = document.querySelectorAll('.dropdown');
+        dropdowns.forEach(dropdown => {
+            const select = dropdown.querySelector('.select');
+            const span = dropdown.querySelector('.selected')
+            const caret = dropdown.querySelector('.caret');
+            const menu = dropdown.querySelector('.menu');
+            const option= dropdown.querySelectorAll('.menu li');
+            const selected = dropdown.querySelector('.selected');
+
+            select.addEventListener('click', () => {
+                select.classList.toggle('select-clicked');
+                caret.classList.toggle('caret-rotate');
+                menu.classList.toggle('menu-open');
+            });
+            option.forEach(option => {
+                option.addEventListener('click', () => {
+                    span.innerText = option.innerText;
+                    select.classList.remove('select-clicked');
+                    caret.classList.remove('caret-rotate');
+                    menu.classList.remove('menu-open');
+                    option.forEach(option => {
+                        option.classList.remove('active');
+                    });
+                    option.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
